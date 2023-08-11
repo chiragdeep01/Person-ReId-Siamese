@@ -5,9 +5,10 @@ Person Re-Identification using Siamese Network with EfficientNet_b0 as architect
 ## Triplet Loss
 The network has been trained using tripletLoss function with cosine similarity.  
 Loss(a,n,p) = max(0, c(a, n) - c(a, p) + margin) where,  
-a = anchor sample embeddings  
-n = negative sample embeddings  
-p = positive sample embeddings  
+- a = Anchor sample embeddings  
+- n = Negative sample embeddings  
+- p = Positive sample embeddings  
+- c = Cosine Similarity
 
 ## Model
 I have used EfficientNet_b0 for this task and replaced the final classication layer with a Linear layer with 512 ouputs which would output feature embeddings for a given Image.  
