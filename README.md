@@ -3,9 +3,10 @@
 Person Re-Identification using Siamese Network with EfficientNet_b0 as architecture and Yolov8 for person Detection.
 
 ## Usage
-- [main.py](https://github.com/chiragdeep01/Person-ReId-Siamese/blob/main/main.py) - Script for Running the ReId on multiple cameras
+- [main.py](https://github.com/chiragdeep01/Person-ReId-Siamese/blob/main/main.py) - Script for Running the ReId on multiple cameras.
 - [ReId.py](https://github.com/chiragdeep01/Person-ReId-Siamese/blob/main/ReId.py) - Contains EfficientNet_b0 changes and ReIdentification class. The ReIdentification involves storing features of persons so I have set-up a max capacity for it and applied Least Recenty Used (LRU) on it.
 - [efficientnetcosine.ipynb](https://github.com/chiragdeep01/Person-ReId-Siamese/blob/main/efficientnetcosine.ipynb) - Training Script
+- [cams.json](https://github.com/chiragdeep01/Person-ReId-Siamese/blob/main/cams.json) - For cameras configurations.
 
 ## Triplet Loss
 The EfficientNet_b0 network has been trained using tripletLoss function with cosine similarity.  
