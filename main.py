@@ -3,6 +3,8 @@ import cv2
 import numpy as np
 from ReId import EffcientNetReId
 import utils
+import json
+import torch
 
 class Cam:
     
@@ -21,17 +23,42 @@ class Cam:
             self.cap = cv2.VideoCapture(self.ip)
             return False
 
+def load_cams(json_path):
+    
+    cams = []
+    
+    f = open(json_path)
+    data = json.load(f)
+    i = 0
+    for cam in data['cameras']:
+        i+=1
+        cams.append(Cam(i, cam["camname"], cam["ip"]))
+        
+    return cams
+        
 if __name__ == "__main__":
     
-    yoloModel = YOLO("models/yolov8n.pt")
-    ReId = EffcientNetReId('models/Eff.pt')
-    cams = [Cam(1,'cam1','vid.mp4'), Cam(2,'cam2','vid.mp4')]
+    cams_jsonPath = "cams.json"
+    yolo_path = "models/yolov8n.pt"
+    efficientNet_path = 'models/Eff.pt'
+    
+    yoloModel = YOLO(yolo_path)
+    
+    if torch.cuda.is_available():
+        yoloModel.to('cuda')
+        device = 0  # GPU
+    else:
+        device = 'cpu'
+    
+    ReId = EffcientNetReId(efficientNet_path)
+    
+    cams = load_cams(cams_jsonPath)
     
     while True:
         for c in cams:
             ret = c.get_frame()
             if ret:
-                results = yoloModel(c.frame)
+                results = yoloModel(c.frame, device = device)
                 boxes = results[0].boxes.data
                 
                 for det in boxes:

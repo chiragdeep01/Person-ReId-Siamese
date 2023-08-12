@@ -1,0 +1,12 @@
+{
+  "cameras" : [
+    {
+        "camname" : "cam1",
+        "ip" : "D:/projects/Person-Reidentification/vid.mp4"
+    },
+    {
+        "camname" : "cam2",
+        "ip" : "D:/projects/Person-Reidentification/vid.mp4"
+    }
+  ]
+}
