@@ -4,9 +4,16 @@ Person Re-Identification using Siamese Network with EfficientNet_b0 as architect
 
 ## Usage
 - [main.py](https://github.com/chiragdeep01/Person-ReId-Siamese/blob/main/main.py) - Script for Running the ReId on multiple cameras.
-- [ReId.py](https://github.com/chiragdeep01/Person-ReId-Siamese/blob/main/ReId.py) - Contains EfficientNet_b0 changes and ReIdentification class. The ReIdentification involves storing features of persons so I have set-up a max capacity for it and applied Least Recenty Used (LRU) on it.
+- [ReId.py](https://github.com/chiragdeep01/Person-ReId-Siamese/blob/main/ReId.py) - Contains EfficientNet_b0 changes and ReIdentification class. The ReIdentification involves storing features of persons so I have set-up a max capacity for it and applied Least Recenty Used (LRU) on it. You can change the track_capacity but make sure to add colors to the dictionary. Increasing track_capacity will slow down the program !!!!
 - [efficientnetcosine.ipynb](https://github.com/chiragdeep01/Person-ReId-Siamese/blob/main/efficientnetcosine.ipynb) - Training Script
 - [cams.json](https://github.com/chiragdeep01/Person-ReId-Siamese/blob/main/cams.json) - For cameras configurations.
+
+## Results
+This was done on Validation data.
+- Blue - Cosine Similarity between Anchor and Negative samples.  
+- Green - Cosine Similarity between Anchor and Positive samples.  
+![Before Training Graph](https://github.com/chiragdeep01/Person-ReId-Siamese/blob/main/results/before.jpg?raw=true)
+![After Training Graph](https://github.com/chiragdeep01/Person-ReId-Siamese/blob/main/results/after.jpg?raw=true)
 
 ## Triplet Loss
 The EfficientNet_b0 network has been trained using tripletLoss function with cosine similarity.  
